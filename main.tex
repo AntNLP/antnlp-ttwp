@@ -1,0 +1,127 @@
+% 用 xelatex 编译
+%\documentclass[a4paper,cs4size,hyperref,fancyhdr]{ctexbook}
+\documentclass[UTF8,openright]{ctexbook}
+\usepackage{ecnu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%% ===== 封面 =====
+\include{preface/cover}
+
+%%%%% ===== 原创性声明与著作权使用声明 =====
+\include{preface/declaration}
+
+%%%%% ===== 答辩委员会成员 =====
+\include{preface/committee}
+
+\frontmatter
+%\restoregeometry
+%%%%% ===== 中文摘要 =====
+\pagestyle{plain}
+\newgeometry{top=3.0cm,bottom=2.7cm,left=2.5cm,right=2.5cm}
+{
+\include{abstract/abstract_chs}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%%%%% ===== 英文摘要 =====
+\include{abstract/abstract_eng}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+}
+\pagestyle{plain}
+
+%%%%% ===== 生成目录
+
+\newgeometry{top=3.0cm,bottom=3.0cm,left=2.5cm,right=2.5cm}
+{
+\setcounter{tocdepth}{1}
+\phantomsection
+\addcontentsline{toc}{chapter}{目录}
+\tableofcontents
+
+\newpage
+\listoffigures % 插图目录
+
+\listoftables  % 表格目录
+}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%%%%%% ===== 正文部分 ===== %%%%%
+\mainmatter
+\newgeometry{top=2.5cm,bottom=2.5cm,left=3cm,right=3cm}
+\linespread{1.4}\selectfont
+%\setlength{\baselineskip}{0.88175cm}
+
+
+\pagestyle{fancy}
+\fancyhf{}  % 清除以前对页眉页脚的设置
+\newcommand{\makeheadrule}{%% 定义页眉与正文间双隔线
+  \makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{0.3pt}}%0.4
+  \rule[0.85\baselineskip]{\headwidth}{1.0pt}\vskip-.8\baselineskip}
+\makeatletter
+\renewcommand{\headrule}{%
+  {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi\makeheadrule}}
+\makeatother
+\renewcommand{\chaptermark}[1]{\markboth{\CTEXthechapter \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+%\fancyhead[RO,LE]{{\small\songti\rightmark}}     % 节标题
+\fancyhead[CO,CE]{{\small\songti\leftmark}}      % 章标题
+%\fancyhead[CO,CE]{华东师范大学博士学位论文}
+%\fancyhead[RO,LE]{$\cdot$ {\small\thepage} $\cdot$}
+\fancyfoot[CO,CE]{{\thepage}}
+
+
+\chapter{绪论}
+  \input{body/chap01}
+\chapter{基础准备}
+  \input{body/chap02}
+\chapter{总结与展望}
+  \input{body/chap03}
+
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\backmatter
+
+%\fancyhf{}  % 清除以前对页眉页脚的设置
+\fancyhead[CO,CE]{参考文献}
+%\fancyhead[CO,LE]{$\cdot$ {\small\thepage} $\cdot$}
+\fancyfoot[CO,CE]{{\thepage}}
+\backmatter%使用此命令后，\addcontentsline{toc}{chapter}{参考文献}命令中页码与参考文献页码所在页码
+\chapter*{ }
+\setlength{\bibsep}{0.5ex} %设置参考文献行间距命令
+\linespread{1.2}\selectfont
+\addcontentsline{toc}{chapter}{参考文献}
+\bibliographystyle{plainnat}
+\bibliography{references}
+%\pagestyle{fancy}
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\chapter*{致谢}
+\addcontentsline{toc}{chapter}{致谢}
+
+这是致谢。
+这是致谢。
+这是致谢。
+这是致谢。
+这是致谢。
+这是致谢。
+这是致谢。
+这是致谢。
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\chapter*{在读期间发表的学术论文情况}
+\addcontentsline{toc}{chapter}{在读期间发表的学术论文情况}
+% \input{sections/papers.tex}
+
+
+
+%\clearpage{\pagestyle{empty}\cleardoublepage}
+%\chapter*{参与科研项目}
+%\addcontentsline{toc}{chapter}{参与科研项目}
+
+\newpage
+\pagestyle{plain}
+\fancyhf{}
+% \input{sections/projects.tex}
+
+\end{document}
