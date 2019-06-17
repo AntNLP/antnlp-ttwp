@@ -18,4 +18,4 @@ For Mac users, you can find this font in /Applications/Microsoft Word.app/Conten
 To install, you need to copy it into an Non-system path (e.g. ~/Desktop), then click to open and follow the instructions. 
 
 2. **How can I change the type of the degree?(Ph.D. / Master)**<br/></br>
-Change it in `committee.tex`, line 8~9 and `ecnu.sty` line 198~199.
+Change it in `committee.tex`, line 8 and `ecnu.sty` line 198.
